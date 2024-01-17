@@ -1,0 +1,47 @@
+ALGORITHM problem 2
+PROCEDURE Inputs(VAR arr: ARRAY_OF INTEGER[]; length: INTEGER)
+VAR
+    i:INTEGER;
+BEGIN
+    FOR i FROM 0 TO length - 1 DO
+        Write("Please enter the ", i + 1, "/", length, " element: ");
+        Read(arr[i]);
+    END_FOR
+END
+
+FUNCTION compareAndSum(set1,set2: ARRAY_OF INTEGER[]) : INTEGER
+VAR
+    sum,temp,i,j: INTEGER:= 0;
+BEGIN
+        WHILE (i < set1.length ) DO
+        temp:=0;
+        j:=0;
+        WHILE (j < set2.length) DO
+            IF (set1[i]<>set2[j]) THEN
+                temp:=temp+1;
+            END_IF
+            j:=j+1;
+        END_WHILE
+        IF (temp=set2.length) THEN
+            sum:=sum+set1[i];
+        END_IF
+        i:=i+1;
+    END_WHILE
+    i:=0;
+    WHILE (i < set2.length ) DO
+        temp:=0;
+        j:=0;
+        WHILE (j < set1.length) DO
+            IF (set2[i]<>set1[j]) THEN
+                temp:=temp+1;
+            END_IF
+            j:=j+1;
+        END_WHILE
+        IF (temp=set1.length) THEN
+            sum:=sum+set2[i];
+        END_IF
+        i:=i+1;
+    END_WHILE
+
+    RETURN sum ;
+END
